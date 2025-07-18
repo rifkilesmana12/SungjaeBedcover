@@ -136,7 +136,7 @@
             <div class="col">
                 <h6 class="fw-bold mb-3">Hubungi Kami</h6>
                 <p class="small mb-1"><i class="fas fa-phone me-1"></i> 0859 3911 6415 (WA)</p>
-                <p class="small mb-2"><i class="fas fa-envelope me-1"></i> info@onlineshop-bedcover.co.id</p>
+                <p class="small mb-2"><i class="fas fa-envelope me-1"></i> info@Sungjae-bedcover.co.id</p>
                 <p class="small"><i class="fas fa-map-marker-alt me-1"></i> Jl. Laswi No.100, Cipicung, Baleendah, Bandung</p>
             </div>
         </div>
