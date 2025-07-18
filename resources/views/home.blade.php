@@ -2,6 +2,14 @@
 
 @section('content')
 
+<style>
+    .bg-pink {
+        background-color: #ff69b4 !important; /* Hot Pink */
+        color: white !important;
+    }
+</style>
+
+
 <!-- Produk Populer -->
 <div class="container my-5">
     <h4 class="fw-bold text-center mb-4" data-aos="fade-down">Produk Populer</h4>
@@ -62,7 +70,7 @@
                 <div class="modal fade" id="modalDeskripsi{{ $item->id }}" tabindex="-1" aria-labelledby="modalLabel{{ $item->id }}" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-lg">
                         <div class="modal-content">
-                            <div class="modal-header bg-dark text-white">
+                            <div class="modal-header bg-pink">
                                 <h5 class="modal-title" id="modalLabel{{ $item->id }}">{{ $item->nama }}</h5>
                                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Tutup"></button>
                             </div>
