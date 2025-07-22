@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Models\Produk;
+use App\Http\Controllers\KomentarController;
 
 // ----------------------------
 // Halaman Umum (User)
@@ -185,5 +186,7 @@ Route::prefix('admin/produk')->group(function () use ($adminMiddleware) {
         return view('admin.produk.index', compact('produk'));
     })->name('admin.produk.index');
     
+    Route::post('/komentar', [KomentarController::class, 'store'])->name('komentar.store');
+
     
 });

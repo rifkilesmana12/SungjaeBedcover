@@ -67,33 +67,79 @@
                 </div>
 
                 <!-- MODAL DESKRIPSI -->
-                <div class="modal fade" id="modalDeskripsi{{ $item->id }}" tabindex="-1" aria-labelledby="modalLabel{{ $item->id }}" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header bg-pink">
-                                <h5 class="modal-title" id="modalLabel{{ $item->id }}">{{ $item->nama }}</h5>
-                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Tutup"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="text-center mb-3">
-                                    @if ($item->gambar)
-                                        <img src="{{ asset($item->gambar) }}" class="img-fluid rounded" style="max-height: 300px;" alt="{{ $item->nama }}">
-                                    @endif
-                                </div>
-                                <p><strong>Harga:</strong> Rp{{ number_format($item->harga) }}</p>
-                                <p><strong>Stok:</strong> {{ $item->stok }}</p>
-                                <p><strong>Deskripsi:</strong><br> {{ $item->deskripsi ?? 'Tidak ada deskripsi.' }}</p>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="https://wa.me/6285939116415?text={{ urlencode('Halo, saya ingin beli produk: ' . $item->nama) }}" 
-                                   class="btn btn-dark" target="_blank">
-                                    <i class="fab fa-whatsapp"></i> Chat via WA
-                                </a>
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                            </div>
-                        </div>
-                    </div>
+<div class="modal fade" id="modalDeskripsi{{ $item->id }}" tabindex="-1" aria-labelledby="modalLabel{{ $item->id }}" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-pink text-white">
+                <h5 class="modal-title" id="modalLabel{{ $item->id }}">{{ $item->nama }}</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Tutup"></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center mb-3">
+                    @if ($item->gambar)
+                        <img src="{{ asset($item->gambar) }}" class="img-fluid rounded" style="max-height: 300px;" alt="{{ $item->nama }}">
+                    @endif
                 </div>
+                <p><strong>Harga:</strong> Rp{{ number_format($item->harga) }}</p>
+                <p><strong>Stok:</strong> {{ $item->stok }}</p>
+                <p><strong>Deskripsi:</strong><br> {{ $item->deskripsi ?? 'Tidak ada deskripsi.' }}</p>
+
+                <hr>
+                <h6 class="mt-3">Ulasan Pelanggan</h6>
+
+                {{-- List Komentar --}}
+                <div class="mb-3" style="max-height: 200px; overflow-y: auto;">
+                    @forelse ($item->komentars as $komentar)
+                        <div class="border-bottom mb-2 pb-1">
+                            <strong>{{ $komentar->nama }}</strong> <small class="text-muted">({{ $komentar->created_at->format('d M Y') }})</small><br>
+                            <span>Rating: {{ $komentar->rating }}⭐</span><br>
+                            <span>{{ $komentar->komentar }}</span>
+                        </div>
+                    @empty
+                        <p class="text-muted">Belum ada ulasan.</p>
+                    @endforelse
+                </div>
+
+                {{-- Form Komentar --}}
+                <form method="POST" action="{{ route('komentar.store') }}">
+                    @csrf
+                    <input type="hidden" name="produk_id" value="{{ $item->id }}">
+
+                    <div class="mb-2">
+                        <label class="form-label">Nama Anda</label>
+                        <input type="text" name="nama" class="form-control" required>
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="form-label">Rating</label>
+                        <select name="rating" class="form-select" required>
+                            <option value="">Pilih Rating</option>
+                            @for ($i = 5; $i >= 1; $i--)
+                                <option value="{{ $i }}">{{ $i }} ⭐</option>
+                            @endfor
+                        </select>
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="form-label">Komentar</label>
+                        <textarea name="komentar" class="form-control" rows="2" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-success btn-sm">Kirim Ulasan</button>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <a href="https://wa.me/6285939116415?text={{ urlencode('Halo, saya ingin beli produk: ' . $item->nama) }}" 
+                   class="btn btn-dark" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Chat via WA
+                </a>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+
             @empty
                 <div class="col">
                     <p class="text-muted text-center">Belum ada produk yang tersedia.</p>

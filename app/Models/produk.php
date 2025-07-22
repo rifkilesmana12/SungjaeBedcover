@@ -40,6 +40,11 @@ class Produk extends Model
             ? asset($this->gambar)
             : 'https://via.placeholder.com/300x200?text=No+Image';
     }
+    public function komentars()
+    {
+    return $this->hasMany(Komentar::class);
+    }
+
 }
 
 
