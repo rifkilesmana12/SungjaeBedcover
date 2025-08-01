@@ -22,7 +22,7 @@
         }
 
         .carousel-item {
-            height: 450px;
+            height: 300px;
             transition: transform 0.5s ease-in-out;
         }
 
