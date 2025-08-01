@@ -8,98 +8,106 @@
 
     <!-- Google Fonts Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f8f9fa; /* abu muda */
+        color: #212529; /* hitam */
+    }
 
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #ffffff;
-            color: #212529;
-        }
+    :root {
+        --primary-color: #212529; /* hitam */
+        --secondary-color: #6c757d; /* abu-abu */
+        --light-color: #f8f9fa; /* abu muda */
+        --dark-color: #000000;
+    }
 
-        :root {
-            --sungjae-pink: #f06292;
-            --sungjae-pink-light: #fce4ec;
-        }
+    .carousel-item {
+        height: 300px;
+        transition: transform 0.5s ease-in-out;
+    }
 
-        .carousel-item {
-            height: 300px;
-            transition: transform 0.5s ease-in-out;
-        }
+    .carousel-item:hover {
+        transform: scale(1.01);
+    }
 
-        .carousel-item:hover {
-            transform: scale(1.01);
-        }
+    .carousel-item > .overlay {
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
 
-        .carousel-item > .overlay {
-            background-color: rgba(0, 0, 0, 0.4);
-            height: 100%;
-            width: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
+    .carousel-caption {
+        z-index: 10;
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+    }
 
-        .carousel-caption {
-            z-index: 10;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
-        }
+    .carousel-caption h1,
+    .carousel-caption p {
+        color: #ffffff;
+    }
 
-        .carousel-caption h1,
-        .carousel-caption p {
-            color: #fff;
-        }
+    .card-img-top {
+        object-fit: cover;
+        height: 200px;
+    }
 
-        .card-img-top {
-            object-fit: cover;
-            height: 200px;
-        }
+    .alert {
+        background-color: var(--light-color);
+        border-left: 5px solid var(--primary-color);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        color: var(--dark-color);
+    }
 
-        .alert {
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        }
+    footer {
+        margin-top: 40px;
+        padding: 20px;
+        text-align: center;
+        background-color: var(--secondary-color);
+        color: #fff;
+        font-size: 14px;
+    }
 
-        footer {
-            margin-top: 40px;
-            padding: 20px;
-            text-align: center;
-            background-color: var(--sungjae-pink-light);
-            color: #333;
-            font-size: 14px;
-        }
+    .btn-dark {
+        background-color: var(--primary-color);
+        border: none;
+        color: #fff;
+    }
 
-        .btn-dark {
-            background-color: var(--sungjae-pink);
-            border: none;
-        }
+    .btn-dark:hover {
+        background-color: #000000;
+        color: #fff;
+    }
 
-        .btn-dark:hover {
-            background-color: #d81b60;
-        }
+    .btn-outline-dark {
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+    }
 
-        .btn-outline-dark {
-            border-color: var(--sungjae-pink);
-            color: var(--sungjae-pink);
-        }
+    .btn-outline-dark:hover {
+        background-color: var(--primary-color);
+        color: #fff;
+    }
 
-        .btn-outline-dark:hover {
-            background-color: var(--sungjae-pink);
-            color: #fff;
-        }
+ @media (max-width: 576px) {
+    .carousel-item {
+        height: 200px !important;
+    }
 
-        @media (max-width: 768px) {
-            .carousel-item {
-                height: 260px;
-            }
+    .carousel-caption h1 {
+        font-size: 1.2rem;
+    }
 
-            .carousel-caption h1 {
-                font-size: 1.5rem;
-            }
+    .carousel-caption p {
+        font-size: 0.85rem;
+    }
+}
 
-            .carousel-caption p {
-                font-size: 0.95rem;
-            }
-        }
-    </style>
+</style>
+
 </head>
 <body>
 
@@ -118,8 +126,8 @@
             <img src="{{ asset('images/gambar2.png') }}" class="d-block w-100 h-100 object-fit-cover" alt="Slide 1">
             <div class="overlay"></div>
             <div class="carousel-caption d-flex flex-column justify-content-center h-100">
-                <h1 class="display-5 fw-bold">Selamat Datang</h1>
-                <p class="lead">Temukan seprai & bedcover terbaik untuk kenyamanan Anda.</p>
+                <h1 class="display-5 fw-bold text-white">Selamat Datang</h1>
+                <p class="lead text-white">Temukan seprai & bedcover terbaik untuk kenyamanan Anda.</p>
             </div>
         </div>
 
@@ -145,7 +153,7 @@
 
 <main class="container-fluid px-4 py-4">
     @if (session('success'))
-        <div class="alert alert-success text-center bg-light">
+        <div class="alert alert-success text-center bg-light text-dark border-dark">
             {{ session('success') }}
         </div>
     @endif
@@ -153,7 +161,7 @@
     @yield('content')
 </main>
 
-<footer>
+<footer class="bg-secondary text-white">
     &copy; {{ date('Y') }} <strong>Sungjae Bedcover</strong>. Semua hak dilindungi.
 </footer>
 

@@ -12,10 +12,11 @@
 
 <!-- Produk Populer -->
 <div class="container my-5">
-    <h4 class="fw-bold text-center mb-4" data-aos="fade-down">Produk Populer</h4>
+    <h4 class="fw-semibold text-center mb-4 text-dark" data-aos="fade-down">Produk Populer</h4>
+
     <div class="d-flex overflow-auto gap-3 pb-2 px-1">
         @foreach ($produk->take(6) as $pop)
-            <div class="card flex-shrink-0 shadow-sm border-0" style="width: 220px;" data-aos="zoom-in-up" data-aos-delay="100">
+            <div class="card flex-shrink-0 border border-light-subtle shadow-sm" style="width: 220px;" data-aos="zoom-in-up" data-aos-delay="100">
                 <a href="#" data-bs-toggle="modal" data-bs-target="#modalDeskripsi{{ $pop->id }}">
                     @if ($pop->gambar)
                         <img src="{{ asset($pop->gambar) }}" class="card-img-top" alt="{{ $pop->nama }}" style="height: 180px; object-fit: cover;">
@@ -23,11 +24,11 @@
                         <img src="https://via.placeholder.com/220x180?text=No+Image" class="card-img-top" alt="No Image">
                     @endif
                 </a>
-                <div class="card-body d-flex flex-column">
-                    <h6 class="card-title">{{ $pop->nama }}</h6>
+                <div class="card-body d-flex flex-column bg-light text-dark">
+                    <h6 class="card-title fw-semibold">{{ $pop->nama }}</h6>
                     <p class="card-text text-muted mb-1">Rp{{ number_format($pop->harga) }}</p>
                     <a href="https://wa.me/6285939116415?text={{ urlencode('Halo, saya ingin beli produk: ' . $pop->nama . ', harga: Rp' . number_format($pop->harga)) }}" 
-                       class="btn btn-sm btn-dark mt-auto w-100" target="_blank">
+                       class="btn btn-sm btn-outline-dark mt-auto w-100" target="_blank">
                         <i class="fab fa-whatsapp"></i> Beli
                     </a>
                 </div>
@@ -39,12 +40,14 @@
 <!-- Produk Terbaru -->
 <div class="py-5" style="background: url('{{ asset('images/bg-produk.jpg') }}') center center / cover no-repeat;">
     <div class="container bg-white bg-opacity-75 p-4 rounded shadow">
-        <h3 class="fw-bold text-center mb-4 border-bottom pb-2" data-aos="fade-down">Produk Terbaru</h3>
+        <h3 class="fw-semibold text-center mb-4 border-bottom border-dark pb-2 text-dark" data-aos="fade-down">
+            Produk Terbaru
+        </h3>
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 mt-3">
             @forelse ($produk as $item)
                 <div class="col" data-aos="flip-left" data-aos-delay="150">
-                    <div class="card h-100 shadow-sm border-0">
+                    <div class="card h-100 border border-light-subtle shadow-sm">
                         <a href="#" data-bs-toggle="modal" data-bs-target="#modalDeskripsi{{ $item->id }}">
                             @if ($item->gambar)
                                 <img src="{{ asset($item->gambar) }}" class="card-img-top" alt="{{ $item->nama }}" style="height: 200px; object-fit: cover;">
@@ -53,13 +56,17 @@
                             @endif
                         </a>
 
-                        <div class="card-body d-flex flex-column">
+                        <div class="card-body d-flex flex-column bg-light text-dark">
                             <h5 class="card-title fw-semibold">{{ $item->nama }}</h5>
-                            <p class="card-text mb-1"><i class="fas fa-tag me-1 text-success"></i> Rp{{ number_format($item->harga) }}</p>
-                            <p class="card-text"><i class="fas fa-box me-1 text-warning"></i> Stok: {{ $item->stok }}</p>
+                            <p class="card-text mb-1">
+                                <i class="fas fa-tag me-1 text-dark"></i> Rp{{ number_format($item->harga) }}
+                            </p>
+                            <p class="card-text">
+                                <i class="fas fa-box me-1 text-secondary"></i> Stok: {{ $item->stok }}
+                            </p>
 
                             <a href="https://wa.me/6285939116415?text={{ urlencode('Halo, saya ingin beli produk: ' . $item->nama . ', harga: Rp' . number_format($item->harga)) }}" 
-                               class="btn btn-dark mt-auto w-100" target="_blank">
+                               class="btn btn-outline-dark mt-auto w-100" target="_blank">
                                 <i class="fab fa-whatsapp"></i> Beli Sekarang
                             </a>
                         </div>
@@ -69,29 +76,31 @@
                 <!-- MODAL DESKRIPSI -->
 <div class="modal fade" id="modalDeskripsi{{ $item->id }}" tabindex="-1" aria-labelledby="modalLabel{{ $item->id }}" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-header bg-pink text-white">
+        <div class="modal-content border border-dark-subtle shadow">
+            <div class="modal-header bg-dark text-white">
                 <h5 class="modal-title" id="modalLabel{{ $item->id }}">{{ $item->nama }}</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Tutup"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body bg-light text-dark">
                 <div class="text-center mb-3">
                     @if ($item->gambar)
                         <img src="{{ asset($item->gambar) }}" class="img-fluid rounded" style="max-height: 300px;" alt="{{ $item->nama }}">
                     @endif
                 </div>
+
                 <p><strong>Harga:</strong> Rp{{ number_format($item->harga) }}</p>
                 <p><strong>Stok:</strong> {{ $item->stok }}</p>
                 <p><strong>Deskripsi:</strong><br> {{ $item->deskripsi ?? 'Tidak ada deskripsi.' }}</p>
 
-                <hr>
+                <hr class="border-dark">
                 <h6 class="mt-3">Ulasan Pelanggan</h6>
 
                 {{-- List Komentar --}}
                 <div class="mb-3" style="max-height: 200px; overflow-y: auto;">
                     @forelse ($item->komentars as $komentar)
                         <div class="border-bottom mb-2 pb-1">
-                            <strong>{{ $komentar->nama }}</strong> <small class="text-muted">({{ $komentar->created_at->format('d M Y') }})</small><br>
+                            <strong>{{ $komentar->nama }}</strong> 
+                            <small class="text-muted">({{ $komentar->created_at->format('d M Y') }})</small><br>
                             <span>Rating: {{ $komentar->rating }}⭐</span><br>
                             <span>{{ $komentar->komentar }}</span>
                         </div>
@@ -125,11 +134,11 @@
                         <textarea name="komentar" class="form-control" rows="2" required></textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-success btn-sm">Kirim Ulasan</button>
+                    <button type="submit" class="btn btn-outline-dark btn-sm">Kirim Ulasan</button>
                 </form>
             </div>
 
-            <div class="modal-footer">
+            <div class="modal-footer bg-light border-top border-dark-subtle">
                 <a href="https://wa.me/6285939116415?text={{ urlencode('Halo, saya ingin beli produk: ' . $item->nama) }}" 
                    class="btn btn-dark" target="_blank">
                     <i class="fab fa-whatsapp"></i> Chat via WA

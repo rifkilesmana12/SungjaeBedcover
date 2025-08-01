@@ -1,6 +1,9 @@
-<nav class="navbar navbar-expand-lg px-4 py-3 shadow-sm" style="background: linear-gradient(to right, #ffc0cb, #f06292);">
+<!-- Tambahkan di <head> kalau belum ada -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+
+<nav class="navbar navbar-expand-lg px-4 py-3 shadow-sm border-bottom bg-white" style="font-family: 'Poppins', sans-serif;">
   <div class="container-fluid">
-    <a class="navbar-brand fw-bold text-white fs-4" href="{{ route('beranda') }}" style="font-family: 'Georgia', cursive;">
+    <a class="navbar-brand fw-bold text-dark fs-4" href="{{ route('beranda') }}">
       <img src="{{ asset('images/gambar1.png') }}" alt="Sungjae" height="32" class="me-2">
       Sungjae Bedcover
     </a>
@@ -14,25 +17,25 @@
       <ul class="navbar-nav gap-2 align-items-center">
         <li class="nav-item">
           <a href="{{ route('beranda') }}"
-             class="btn {{ request()->routeIs('beranda') ? 'btn-light text-pink' : 'btn-outline-light text-white border-white' }}">
+             class="btn {{ request()->routeIs('beranda') ? 'btn-dark text-white' : 'btn-outline-dark' }}">
             Beranda
           </a>
         </li>
         <li class="nav-item">
           <a href="{{ route('katalog') }}"
-             class="btn {{ request()->routeIs('katalog') ? 'btn-light text-pink' : 'btn-outline-light text-white border-white' }}">
+             class="btn {{ request()->routeIs('katalog') ? 'btn-dark text-white' : 'btn-outline-dark' }}">
             Katalog Produksi
           </a>
         </li>
         <li class="nav-item">
           <a href="{{ route('tentang') }}"
-             class="btn {{ request()->routeIs('tentang') ? 'btn-light text-pink' : 'btn-outline-light text-white border-white' }}">
+             class="btn {{ request()->routeIs('tentang') ? 'btn-dark text-white' : 'btn-outline-dark' }}">
             Tentang Kami
           </a>
         </li>
         <li class="nav-item">
           <a href="{{ route('pengaturan') }}"
-             class="btn {{ request()->routeIs('pengaturan') ? 'btn-light text-pink' : 'btn-outline-light text-white border-white' }}">
+             class="btn {{ request()->routeIs('pengaturan') ? 'btn-dark text-white' : 'btn-outline-dark' }}">
             Login
           </a>
         </li>
