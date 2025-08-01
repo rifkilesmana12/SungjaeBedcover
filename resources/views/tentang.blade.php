@@ -51,7 +51,7 @@
                     <i class="fas fa-users text-secondary me-2"></i> Siapa Kami?
                 </h4>
                 <p>
-                    Backcover adalah brand lokal yang berfokus pada produksi seprai berkualitas tinggi
+                    Bedcover adalah brand lokal yang berfokus pada produksi seprai berkualitas tinggi
                     dengan desain eksklusif. Kami percaya kenyamanan tidur dimulai dari bahan terbaik dan desain elegan.
                 </p>
 
@@ -68,7 +68,7 @@
                 </h4>
                 <p>
                     Menjadi pilihan utama masyarakat Indonesia dalam urusan kenyamanan tempat tidur dengan
-                    seprai Backcover berkualitas dan bernilai estetika tinggi.
+                    seprai Bedcover berkualitas dan bernilai estetika tinggi.
                 </p>
 
                 <a href="{{ route('katalog') }}" class="btn btn-outline-dark mt-4">
