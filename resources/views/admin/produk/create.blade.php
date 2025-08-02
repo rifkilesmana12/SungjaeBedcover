@@ -20,22 +20,22 @@
         <div class="col-12 col-md-8 col-lg-6">
             <div class="mb-3">
                 <label for="nama" class="form-label fw-semibold">Nama Produk</label>
-                <input type="text" name="nama" class="form-control" placeholder="Contoh: Sprei Katun Jepang" required>
+                <input type="text" name="nama" class="form-control" placeholder=>
             </div>
 
             <div class="mb-3">
                 <label for="harga" class="form-label fw-semibold">Harga (Rp)</label>
-                <input type="number" name="harga" class="form-control" placeholder="Contoh: 120000" required>
+                <input type="number" name="harga" class="form-control" placeholder=>
             </div>
 
             <div class="mb-3">
                 <label for="stok" class="form-label fw-semibold">Stok Produk</label>
-                <input type="number" name="stok" class="form-control" placeholder="Jumlah stok tersedia" required>
+                <input type="number" name="stok" class="form-control" placeholder=>
             </div>
 
             <div class="mb-3">
                 <label for="deskripsi" class="form-label fw-semibold">Deskripsi Produk (opsional)</label>
-                <textarea name="deskripsi" class="form-control" placeholder="Contoh: Sprei katun lembut dan nyaman">{{ old('deskripsi') }}</textarea>
+                <textarea name="deskripsi" class="form-control" placeholder=>{{ old('deskripsi') }}</textarea>
             </div>
 
 
